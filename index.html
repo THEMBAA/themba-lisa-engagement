@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Themba &amp; Lisa — Engagement Invitation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Great+Vibes&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+    :root {
+      --cream: #f7f3ea;
+      --cream-light: #faf8f3;
+      --gold: #b5a48a;
+      --gold-light: #d4c9b0;
+      --gold-dark: #8a7d68;
+      --ink: #1a1a1a;
+    }
+
+    html { font-size: 16px; -webkit-text-size-adjust: 100%; touch-action: manipulation; }
+
+    body {
+      background: var(--cream);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      color: var(--ink);
+      min-height: 100vh;
+      overflow-x: hidden;
+      width: 100%;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ── BALLOON LAYER ── */
+    #balloons-layer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      z-index: 10;
+      overflow: hidden;
+    }
+
+    .balloon {
+      position: absolute;
+      bottom: -140px;
+      will-change: transform, opacity;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      -webkit-animation-name: floatUp;
+      animation-name: floatUp;
+      -webkit-animation-timing-function: linear;
+      animation-timing-function: linear;
+      -webkit-animation-fill-mode: forwards;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes floatUp {
+      0%   { -webkit-transform: translateY(0) rotate(0deg); transform: translateY(0) rotate(0deg); opacity: 1; }
+      75%  { opacity: 1; }
+      100% { -webkit-transform: translateY(-115vh) rotate(var(--sway,15deg)); transform: translateY(-115vh) rotate(var(--sway,15deg)); opacity: 0; }
+    }
+
+    @-webkit-keyframes floatUp {
+      0%   { -webkit-transform: translateY(0) rotate(0deg); opacity: 1; }
+      75%  { opacity: 1; }
+      100% { -webkit-transform: translateY(-115vh) rotate(var(--sway,15deg)); opacity: 0; }
+    }
+
+    /* ── PAGE ── */
+    .page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(1rem, 4vw, 3rem) clamp(0.75rem, 4vw, 2rem);
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--cream-light);
+      border: 1px solid var(--gold-light);
+      width: 100%;
+      max-width: 520px;
+      padding: clamp(2rem, 6vw, 3.5rem) clamp(1.5rem, 6vw, 3rem);
+      text-align: center;
+      position: relative;
+      -webkit-animation: fadeUp 0.9s ease both;
+      animation: fadeUp 0.9s ease both;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 10px; left: 10px; right: 10px; bottom: 10px;
+      border: 0.5px solid var(--gold-light);
+      pointer-events: none;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; -webkit-transform: translateY(28px); transform: translateY(28px); }
+      to   { opacity: 1; -webkit-transform: translateY(0); transform: translateY(0); }
+    }
+
+    @-webkit-keyframes fadeUp {
+      from { opacity: 0; -webkit-transform: translateY(28px); }
+      to   { opacity: 1; -webkit-transform: translateY(0); }
+    }
+
+    .corner { position: absolute; width: clamp(22px,5vw,34px); height: clamp(22px,5vw,34px); }
+    .corner--tl { top:6px; left:6px; border-top:1px solid var(--gold); border-left:1px solid var(--gold); }
+    .corner--tr { top:6px; right:6px; border-top:1px solid var(--gold); border-right:1px solid var(--gold); }
+    .corner--bl { bottom:6px; left:6px; border-bottom:1px solid var(--gold); border-left:1px solid var(--gold); }
+    .corner--br { bottom:6px; right:6px; border-bottom:1px solid var(--gold); border-right:1px solid var(--gold); }
+
+    .cordially {
+      font-size: clamp(10px,2.2vw,12px);
+      letter-spacing: 0.16em;
+      color: var(--gold-dark);
+      text-transform: uppercase;
+      font-style: italic;
+      margin-bottom: clamp(1rem,3vw,1.6rem);
+      line-height: 1.7;
+    }
+
+    .name {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(48px,12vw,68px);
+      color: var(--ink);
+      line-height: 1.05;
+      display: block;
+    }
+
+    .ampersand {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(32px,8vw,48px);
+      color: var(--gold-dark);
+      display: block;
+      line-height: 1;
+      margin: 0.1rem 0;
+    }
+
+    .divider { display:flex; align-items:center; gap:10px; margin:clamp(1.2rem,4vw,2rem) 0; }
+    .divider-line { flex:1; height:0.5px; background:var(--gold-light); }
+    .divider-ornament { font-size:clamp(11px,3vw,15px); color:var(--gold); letter-spacing:4px; }
+
+    .details { display:grid; gap:clamp(0.9rem,2.5vw,1.3rem); margin-bottom:clamp(1.2rem,4vw,2rem); }
+
+    .detail-label {
+      font-size: clamp(9px,1.8vw,10px);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 0.2rem;
+    }
+
+    .detail-value {
+      font-size: clamp(15px,3.8vw,18px);
+      color: var(--ink);
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.5;
+    }
+
+    .theme-band {
+      background: var(--ink);
+      padding: clamp(0.7rem,2.5vw,1rem) clamp(1rem,4vw,1.5rem);
+      margin-bottom: clamp(1.4rem,4vw,2rem);
+    }
+    .theme-label { font-size:clamp(8px,1.8vw,10px); letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:0.2rem; }
+    .theme-value { font-size:clamp(14px,3.5vw,17px); font-style:italic; color:var(--cream-light); letter-spacing:0.05em; }
+
+    .rsvp-btn {
+      display: inline-block;
+      padding: clamp(0.7rem,2.5vw,0.9rem) clamp(2rem,8vw,3.2rem);
+      background: transparent;
+      border: 1px solid var(--ink);
+      color: var(--ink);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(11px,2.5vw,13px);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      cursor: pointer;
+      -webkit-transition: background 0.3s, color 0.3s;
+      transition: background 0.3s, color 0.3s;
+      -webkit-animation: fadeUp 0.9s ease 0.6s both;
+      animation: fadeUp 0.9s ease 0.6s both;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      min-height: 44px;
+      min-width: 120px;
+      position: relative;
+      z-index: 20;
+    }
+    .rsvp-btn:hover, .rsvp-btn:active, .rsvp-btn:focus {
+      background:var(--ink); color:var(--cream-light); outline:none;
+    }
+
+    /* ── OVERLAY ── */
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(20,18,14,0.75);
+      z-index: 300;
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+    }
+    .overlay.active { display: block; }
+
+    .overlay-inner {
+      min-height: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: clamp(0.75rem,3vw,2rem) clamp(0.75rem,4vw,1.5rem);
+    }
+
+    /* ── MODAL ── */
+    .modal {
+      background: var(--cream-light);
+      border: 1px solid var(--gold-light);
+      width: 100%;
+      max-width: 400px;
+      padding: clamp(2.2rem,6vw,2.8rem) clamp(1.2rem,5vw,2.2rem) clamp(1.8rem,5vw,2.4rem);
+      text-align: center;
+      position: relative;
+      -webkit-animation: fadeUp 0.35s ease both;
+      animation: fadeUp 0.35s ease both;
+      margin: auto 0;
+    }
+
+    .modal::before {
+      content: '';
+      position: absolute;
+      top: 8px; left: 8px; right: 8px; bottom: 8px;
+      border: 0.5px solid var(--gold-light);
+      pointer-events: none;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: clamp(10px,2.5vw,14px);
+      right: clamp(10px,2.5vw,14px);
+      background: none;
+      border: none;
+      font-size: clamp(20px,5vw,24px);
+      color: var(--gold-dark);
+      cursor: pointer;
+      line-height: 1;
+      z-index: 2;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      min-height: 40px;
+    }
+
+    .modal-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(40px,10vw,50px);
+      color: var(--ink);
+      margin-bottom: 0.2rem;
+      line-height: 1.1;
+    }
+
+    .modal-sub {
+      font-style: italic;
+      font-size: clamp(11px,2.8vw,13px);
+      letter-spacing: 0.1em;
+      color: var(--gold-dark);
+      text-transform: uppercase;
+      margin-bottom: clamp(1.2rem,4vw,1.8rem);
+      line-height: 1.5;
+    }
+
+    .form-group { margin-bottom: clamp(0.9rem,3vw,1.2rem); text-align: left; }
+
+    .form-group label {
+      display: block;
+      font-size: clamp(10px,2.2vw,11px);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: clamp(0.65rem,2.5vw,0.8rem) clamp(0.75rem,2.5vw,1rem);
+      background: var(--cream);
+      border: 0.5px solid var(--gold-light);
+      border-radius: 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(15px,4vw,16px);
+      font-style: italic;
+      color: var(--ink);
+      outline: none;
+      -webkit-transition: border-color 0.2s;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+      appearance: none;
+      min-height: 46px;
+      font-size: 16px;
+    }
+
+    .form-group textarea { resize: vertical; min-height: clamp(78px,20vw,95px); }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--gold-dark); }
+    .form-group input.error { border-color: #a0402a; }
+
+    .submit-btn {
+      width: 100%;
+      padding: clamp(0.8rem,2.8vw,0.95rem);
+      min-height: 50px;
+      background: var(--ink);
+      border: none;
+      color: var(--cream-light);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(12px,2.8vw,14px);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      -webkit-transition: background 0.2s;
+      transition: background 0.2s;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      position: relative;
+      z-index: 20;
+    }
+    .submit-btn:hover, .submit-btn:active { background: #333; }
+
+    /* ── THANK YOU ── */
+    .thank-you { display: none; padding: 0.3rem 0 0.5rem; }
+
+    /* ── DANCE STAGE ── */
+    #dance-stage {
+      display: none;
+      width: 130px;
+      height: 90px;
+      margin: 0.6rem auto 0.8rem;
+      position: relative;
+    }
+
+    .dancer {
+      position: absolute;
+      bottom: 0;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+    }
+
+    .dancer-a {
+      left: 8px;
+      -webkit-animation: danceA 0.48s ease-in-out infinite alternate;
+      animation: danceA 0.48s ease-in-out infinite alternate;
+      -webkit-transform-origin: 50% 100%;
+      transform-origin: 50% 100%;
+    }
+
+    .dancer-b {
+      right: 8px;
+      -webkit-animation: danceB 0.48s ease-in-out infinite alternate;
+      animation: danceB 0.48s ease-in-out infinite alternate;
+      -webkit-transform-origin: 50% 100%;
+      transform-origin: 50% 100%;
+    }
+
+    @keyframes danceA {
+      0%   { -webkit-transform: rotate(-14deg); transform: rotate(-14deg); }
+      50%  { -webkit-transform: rotate(3deg) scaleY(0.96); transform: rotate(3deg) scaleY(0.96); }
+      100% { -webkit-transform: rotate(15deg); transform: rotate(15deg); }
+    }
+
+    @-webkit-keyframes danceA {
+      0%   { -webkit-transform: rotate(-14deg); }
+      50%  { -webkit-transform: rotate(3deg) scaleY(0.96); }
+      100% { -webkit-transform: rotate(15deg); }
+    }
+
+    @keyframes danceB {
+      0%   { -webkit-transform: rotate(14deg); transform: rotate(14deg); }
+      50%  { -webkit-transform: rotate(-3deg) scaleY(0.96); transform: rotate(-3deg) scaleY(0.96); }
+      100% { -webkit-transform: rotate(-15deg); transform: rotate(-15deg); }
+    }
+
+    @-webkit-keyframes danceB {
+      0%   { -webkit-transform: rotate(14deg); }
+      50%  { -webkit-transform: rotate(-3deg) scaleY(0.96); }
+      100% { -webkit-transform: rotate(-15deg); }
+    }
+
+    .ty-name {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(36px,9vw,48px);
+      color: var(--ink);
+      margin: 0.2rem 0 0.6rem;
+      display: block;
+      line-height: 1.1;
+    }
+
+    .ty-text {
+      font-style: italic;
+      color: var(--gold-dark);
+      font-size: clamp(14px,3.5vw,16px);
+      line-height: 1.8;
+    }
+
+    .ty-sign {
+      margin-top: 0.8rem;
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(24px,6vw,32px);
+      color: var(--ink);
+    }
+
+    /* ── GUEST COUNT BUTTON ── */
+    .guest-count-btn {
+      position: fixed;
+      bottom: clamp(0.8rem,2vw,1.2rem);
+      right: clamp(0.8rem,2vw,1.2rem);
+      background: var(--ink);
+      border: 1px solid var(--gold-light);
+      color: var(--cream-light);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(10px,2.2vw,12px);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.55rem 1rem;
+      cursor: pointer;
+      z-index: 350;
+      display: none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      min-height: 40px;
+      min-width: 100px;
+    }
+    .guest-count-btn:hover, .guest-count-btn:active { background: #333; }
+
+    /* ── GUEST PANEL ── */
+    #guestPanel {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: var(--ink);
+      color: var(--cream-light);
+      z-index: 400;
+      -webkit-transform: translateY(100%);
+      transform: translateY(100%);
+      -webkit-transition: -webkit-transform 0.38s ease;
+      transition: transform 0.38s ease;
+      max-height: 58vh;
+      overflow-y: auto;
+      font-family: 'Cormorant Garamond', serif;
+    }
+    #guestPanel.open {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 1.2rem;
+      border-bottom: 0.5px solid rgba(255,255,255,0.15);
+      position: -webkit-sticky;
+      position: sticky;
+      top: 0;
+      background: var(--ink);
+    }
+
+    .panel-title { font-size: clamp(11px,2.5vw,13px); letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); }
+
+    .panel-close {
+      background:none; border:none; color:var(--gold-dark);
+      font-size:20px; cursor:pointer; padding:6px;
+      min-width:36px; min-height:36px;
+      display:flex; align-items:center; justify-content:center;
+      -webkit-tap-highlight-color:transparent;
+      touch-action: manipulation;
+    }
+
+    .guest-list { padding: 0.7rem 1.2rem 1.4rem; }
+
+    .guest-item {
+      padding: 0.6rem 0;
+      border-bottom: 0.5px solid rgba(255,255,255,0.08);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.2rem 1rem;
+      align-items: flex-start;
+    }
+    .guest-item:last-child { border-bottom: none; }
+
+    .g-name { font-size:clamp(14px,3.5vw,16px); font-style:italic; color:var(--cream-light); flex:1 1 40%; }
+    .g-diet { font-size:clamp(12px,2.8vw,13px); color:var(--gold-dark); font-style:italic; flex:1 1 40%; }
+    .g-time { font-size:clamp(9px,2vw,10px); color:rgba(255,255,255,0.35); white-space:nowrap; flex:0 0 auto; align-self:flex-end; }
+
+    /* ── TABLET ── */
+    @media (min-width: 768px) {
+      .details { grid-template-columns:1fr 1fr; gap:1rem 2rem; }
+      .detail-row:last-child { grid-column:1/-1; }
+      .overlay-inner { align-items:center; }
+    }
+
+    /* ── DESKTOP ── */
+    @media (min-width: 1024px) {
+      .card { padding:3.5rem 3rem; max-width:560px; }
+      .modal { max-width:420px; }
+    }
+
+    @media (max-width: 360px) {
+      .card { padding:1.6rem 1rem; }
+      .card::before { top:6px; left:6px; right:6px; bottom:6px; }
+      .modal { padding:2rem 1rem 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="balloons-layer" aria-hidden="true"></div>
+
+  <main class="page" role="main">
+    <article class="card" aria-label="Engagement Invitation for Themba and Lisa">
+      <span class="corner corner--tl" aria-hidden="true"></span>
+      <span class="corner corner--tr" aria-hidden="true"></span>
+      <span class="corner corner--bl" aria-hidden="true"></span>
+      <span class="corner corner--br" aria-hidden="true"></span>
+
+      <p class="cordially">You are cordially invited to the engagement of</p>
+      <span class="name">Themba</span>
+      <span class="ampersand">&amp;</span>
+      <span class="name">Lisa</span>
+
+      <div class="divider" aria-hidden="true">
+        <div class="divider-line"></div>
+        <span class="divider-ornament">&#10022; &#10022; &#10022;</span>
+        <div class="divider-line"></div>
+      </div>
+
+      <div class="details">
+        <div class="detail-row">
+          <p class="detail-label">Date</p>
+          <p class="detail-value">Saturday, 6 June 2026</p>
+        </div>
+        <div class="detail-row">
+          <p class="detail-label">Arrival</p>
+          <p class="detail-value">10h30</p>
+        </div>
+        <div class="detail-row">
+          <p class="detail-label">Venue</p>
+          <p class="detail-value">62 Koedoe Ave, Birchleigh<br>House of Liberty</p>
+        </div>
+      </div>
+
+      <div class="theme-band">
+        <p class="theme-label">Dress Code</p>
+        <p class="theme-value">Monochrome — Black &amp; White</p>
+      </div>
+
+      <button class="rsvp-btn" id="rsvpBtn" aria-haspopup="dialog">RSVP</button>
+    </article>
+  </main>
+
+  <!-- RSVP OVERLAY -->
+  <div class="overlay" id="rsvpOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="overlay-inner">
+      <div class="modal">
+        <button class="close-btn" id="closeBtn" aria-label="Close">&#10005;</button>
+
+        <div id="rsvpForm">
+          <p class="modal-title" id="modalTitle">RSVP</p>
+          <p class="modal-sub">Kindly confirm your attendance</p>
+
+          <div class="form-group">
+            <label for="guestName">Full Name</label>
+            <input type="text" id="guestName" name="guestName" placeholder="Your name" autocomplete="name" autocapitalize="words" />
+          </div>
+
+          <div class="form-group">
+            <label for="dietary">Dietary Requirements</label>
+            <textarea id="dietary" name="dietary" placeholder="Any allergies or dietary preferences? (optional)"></textarea>
+          </div>
+
+          <button class="submit-btn" id="submitBtn">Confirm Attendance</button>
+        </div>
+
+        <div class="thank-you" id="thankYou" aria-live="polite">
+
+          <!-- Dancing couple -->
+          <div id="dance-stage">
+            <!-- Groom (filled black) -->
+            <svg class="dancer dancer-a" width="44" height="84" viewBox="0 0 44 84" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="22" cy="10" r="8.5" fill="#1a1a1a"/>
+              <line x1="22" y1="19" x2="22" y2="48" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round"/>
+              <line x1="22" y1="27" x2="5" y2="38" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="22" y1="27" x2="38" y2="18" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="22" y1="48" x2="8" y2="72" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="22" y1="48" x2="36" y2="65" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="36" y1="65" x2="44" y2="72" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/>
+              <line x1="8" y1="72" x2="2" y2="78" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+
+            <!-- Bride (outline with dress) -->
+            <svg class="dancer dancer-b" width="44" height="84" viewBox="0 0 44 84" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="22" cy="10" r="8.5" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+              <circle cx="22" cy="2.5" r="4.5" fill="#1a1a1a"/>
+              <line x1="22" y1="19" x2="22" y2="42" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round"/>
+              <polygon points="10,42 34,42 38,76 6,76" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linejoin="round"/>
+              <line x1="22" y1="25" x2="5" y2="15" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="22" y1="25" x2="38" y2="33" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="11" y1="76" x2="5" y2="82" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/>
+              <line x1="31" y1="76" x2="39" y2="82" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+
+          <p class="ty-text" style="font-size:clamp(10px,2.2vw,11px);letter-spacing:.2em;text-transform:uppercase;margin-bottom:0.15rem;">Thank you,</p>
+          <span class="ty-name" id="tyName"></span>
+          <p class="ty-text">We look forward to celebrating<br>this special day with you.</p>
+          <p class="ty-sign">Themba &amp; Lisa</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GUEST PANEL -->
+  <div id="guestPanel">
+    <div class="panel-header">
+      <p class="panel-title">Guest List &nbsp;<span id="guestCount">0</span> confirmed</p>
+      <button class="panel-close" id="panelCloseBtn" aria-label="Close">&#10005;</button>
+    </div>
+    <div class="guest-list" id="guestList"></div>
+  </div>
+
+  <button class="guest-count-btn" id="guestCountBtn">
+    RSVPs &nbsp;<span id="guestCountBadge">0</span>
+  </button>
+
+  <script>
+    (function() {
+      'use strict';
+
+      var STORE_KEY = 'thembalisa_rsvps_v1';
+
+      function getRsvps() {
+        try { return JSON.parse(localStorage.getItem(STORE_KEY) || '[]'); }
+        catch(e) { return []; }
+      }
+
+      function saveRsvp(name, dietary) {
+        var list = getRsvps();
+        list.push({
+          name: name,
+          dietary: dietary || '',
+          time: new Date().toLocaleString('en-ZA', { day:'2-digit', month:'short', hour:'2-digit', minute:'2-digit' })
+        });
+        try { localStorage.setItem(STORE_KEY, JSON.stringify(list)); } catch(e) {}
+        renderGuests(list);
+      }
+
+      function esc(s) {
+        return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      }
+
+      function renderGuests(list) {
+        var n = list.length;
+        var guestCount = document.getElementById('guestCount');
+        var guestCountBadge = document.getElementById('guestCountBadge');
+        var guestCountBtn = document.getElementById('guestCountBtn');
+        var guestList = document.getElementById('guestList');
+
+        if (guestCount) guestCount.textContent = n;
+        if (guestCountBadge) guestCountBadge.textContent = n;
+        if (guestCountBtn) guestCountBtn.style.display = n > 0 ? 'block' : 'none';
+
+        if (!guestList) return;
+
+        var html = list.length === 0
+          ? '<p style="color:var(--gold-dark);font-style:italic;font-size:14px;padding:0.5rem 0;">No RSVPs yet.</p>'
+          : list.slice().reverse().map(function(g) {
+              return '<div class="guest-item">' +
+                '<span class="g-name">' + esc(g.name) + '</span>' +
+                '<span class="g-diet">' + (g.dietary ? esc(g.dietary) : '—') + '</span>' +
+                '<span class="g-time">' + esc(g.time) + '</span>' +
+              '</div>';
+            }).join('');
+        guestList.innerHTML = html;
+      }
+
+      /* ── MODAL ── */
+      function openRsvp() {
+        var overlay = document.getElementById('rsvpOverlay');
+        if (!overlay) return;
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        setTimeout(function() {
+          var n = document.getElementById('guestName');
+          if (n) n.focus();
+        }, 120);
+      }
+
+      function closeRsvp() {
+        var overlay = document.getElementById('rsvpOverlay');
+        if (!overlay) return;
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+
+        var rsvpForm = document.getElementById('rsvpForm');
+        var thankYou = document.getElementById('thankYou');
+        var danceStage = document.getElementById('dance-stage');
+        var guestName = document.getElementById('guestName');
+        var dietary = document.getElementById('dietary');
+
+        if (rsvpForm) rsvpForm.style.display = '';
+        if (thankYou) thankYou.style.display = 'none';
+        if (danceStage) danceStage.style.display = 'none';
+        if (guestName) { guestName.value = ''; guestName.classList.remove('error'); }
+        if (dietary) dietary.value = '';
+      }
+
+      function submitRsvp() {
+        var nameEl = document.getElementById('guestName');
+        if (!nameEl) return;
+        var name = nameEl.value.trim();
+        if (!name) { nameEl.classList.add('error'); nameEl.focus(); return; }
+        var dietary = document.getElementById('dietary');
+        var dietaryVal = dietary ? dietary.value.trim() : '';
+
+        saveRsvp(name, dietaryVal);
+
+        nameEl.classList.remove('error');
+        var tyName = document.getElementById('tyName');
+        if (tyName) tyName.textContent = name;
+
+        var rsvpForm = document.getElementById('rsvpForm');
+        var thankYou = document.getElementById('thankYou');
+        if (rsvpForm) rsvpForm.style.display = 'none';
+        if (thankYou) thankYou.style.display = 'block';
+
+        var stage = document.getElementById('dance-stage');
+        if (stage) stage.style.display = 'block';
+
+        // Stop dancing after exactly 2s
+        setTimeout(function() {
+          if (!stage) return;
+          var dancers = stage.querySelectorAll('.dancer');
+          for (var i = 0; i < dancers.length; i++) {
+            dancers[i].style.animation = 'none';
+            dancers[i].style.webkitAnimation = 'none';
+          }
+        }, 2000);
+      }
+
+      /* ── GUEST PANEL ── */
+      function togglePanel() {
+        var panel = document.getElementById('guestPanel');
+        if (panel) panel.classList.toggle('open');
+      }
+      function closePanel() {
+        var panel = document.getElementById('guestPanel');
+        if (panel) panel.classList.remove('open');
+      }
+
+      /* ── BALLOONS ── */
+      function buildBalloon(x, delay, size, isBlack) {
+        var el   = document.createElement('div');
+        el.className = 'balloon';
+        var sway = ((Math.random() * 36) - 18).toFixed(1) + 'deg';
+        var dur  = (5.5 + Math.random() * 4).toFixed(2) + 's';
+
+        // CRITICAL FIX: Set individual style properties instead of cssText
+        // cssText was overwriting the animation-name from the CSS class!
+        el.style.left = x + 'px';
+        el.style.setProperty('--sway', sway);
+        el.style.webkitAnimationDuration = dur;
+        el.style.animationDuration = dur;
+        el.style.webkitAnimationDelay = delay + 's';
+        el.style.animationDelay = delay + 's';
+
+        var fill   = isBlack ? '#1a1a1a' : '#ffffff';
+        var stroke = isBlack ? '#444'    : '#c9bfa8';
+        var knot   = isBlack ? '#333'    : '#d4c9b0';
+        var str    = isBlack ? '#666'    : '#bdb0a0';
+        var shine  = isBlack ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.45)';
+
+        var w = Math.round(size);
+        var h = Math.round(size * 1.28);
+        var cx = w / 2, cy = h / 2;
+        var rx = cx - 2, ry = cy - 2;
+        var sx = cx - rx * 0.35, sy = cy - ry * 0.35;
+        var sxr = rx * 0.2, syr = ry * 0.22;
+        var bot = h - 2;
+        var qx = cx + 9, qy = h + 22, ex = cx - 5, ey = h + 42;
+
+        // Use DOM methods instead of innerHTML for better mobile compatibility
+        var svgNS = 'http://www.w3.org/2000/svg';
+        var svg = document.createElementNS(svgNS, 'svg');
+        svg.setAttribute('width', w);
+        svg.setAttribute('height', h + 44);
+        svg.setAttribute('viewBox', '0 0 ' + w + ' ' + (h + 44));
+        svg.setAttribute('xmlns', svgNS);
+
+        var ellipse = document.createElementNS(svgNS, 'ellipse');
+        ellipse.setAttribute('cx', cx);
+        ellipse.setAttribute('cy', cy);
+        ellipse.setAttribute('rx', rx);
+        ellipse.setAttribute('ry', ry);
+        ellipse.setAttribute('fill', fill);
+        ellipse.setAttribute('stroke', stroke);
+        ellipse.setAttribute('stroke-width', '1.2');
+        svg.appendChild(ellipse);
+
+        var shineEl = document.createElementNS(svgNS, 'ellipse');
+        shineEl.setAttribute('cx', sx.toFixed(1));
+        shineEl.setAttribute('cy', sy.toFixed(1));
+        shineEl.setAttribute('rx', sxr.toFixed(1));
+        shineEl.setAttribute('ry', syr.toFixed(1));
+        shineEl.setAttribute('fill', shine);
+        shineEl.setAttribute('transform', 'rotate(-22,' + sx.toFixed(1) + ',' + sy.toFixed(1) + ')');
+        svg.appendChild(shineEl);
+
+        var knotEl = document.createElementNS(svgNS, 'circle');
+        knotEl.setAttribute('cx', cx);
+        knotEl.setAttribute('cy', bot);
+        knotEl.setAttribute('r', '3.5');
+        knotEl.setAttribute('fill', knot);
+        svg.appendChild(knotEl);
+
+        var path = document.createElementNS(svgNS, 'path');
+        path.setAttribute('d', 'M' + cx + ' ' + h + ' Q' + qx + ' ' + qy + ' ' + ex + ' ' + ey);
+        path.setAttribute('stroke', str);
+        path.setAttribute('stroke-width', '1');
+        path.setAttribute('fill', 'none');
+        svg.appendChild(path);
+
+        el.appendChild(svg);
+        return el;
+      }
+
+      function launchBalloons() {
+        var layer = document.getElementById('balloons-layer');
+        if (!layer) return;
+        var vw    = Math.min(window.innerWidth, window.screen ? window.screen.width : window.innerWidth);
+        var count = Math.max(10, Math.min(22, Math.floor(vw / 38)));
+        for (var i = 0; i < count; i++) {
+          var x     = 10 + Math.random() * (vw - 70);
+          var delay = Math.random() * 3;
+          var size  = 26 + Math.random() * 22;
+          layer.appendChild(buildBalloon(x, delay, size, i % 2 === 0));
+        }
+        setTimeout(function() {
+          if (layer) layer.innerHTML = '';
+        }, 10500);
+      }
+
+      /* ── EVENT LISTENERS ── */
+      // CRITICAL FIX: Use a unified handler that works for both click and touch
+      // WITHOUT calling preventDefault on touchend (which blocks click)
+      function addClickListener(id, handler) {
+        var el = document.getElementById(id);
+        if (!el) return;
+
+        var isTouch = false;
+
+        el.addEventListener('touchstart', function(e) {
+          isTouch = true;
+        }, { passive: true });
+
+        el.addEventListener('touchend', function(e) {
+          isTouch = true;
+          // Don't call preventDefault - let the click event fire naturally
+          // or call handler directly for faster response
+          handler();
+        }, { passive: true });
+
+        el.addEventListener('click', function(e) {
+          if (!isTouch) {
+            handler();
+          }
+          isTouch = false;
+        });
+      }
+
+      addClickListener('rsvpBtn', openRsvp);
+      addClickListener('closeBtn', closeRsvp);
+      addClickListener('submitBtn', submitRsvp);
+      addClickListener('guestCountBtn', togglePanel);
+      addClickListener('panelCloseBtn', closePanel);
+
+      var overlay = document.getElementById('rsvpOverlay');
+      if (overlay) {
+        overlay.addEventListener('click', function(e) {
+          if (e.target === this) closeRsvp();
+        });
+      }
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeRsvp();
+      });
+
+      /* ── INIT ── */
+      renderGuests(getRsvps());
+      launchBalloons();
+    })();
+  </script>
+
+</body>
+</html>
